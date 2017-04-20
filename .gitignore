@@ -1,0 +1,13 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+# Local Files
+*.local
+.vscode/
