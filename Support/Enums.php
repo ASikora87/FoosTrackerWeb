@@ -7,13 +7,16 @@ namespace Enum;
  */
 abstract class Player{
 
+    const ID = "ID";
 	const NAME = "NAME";
 	const HOMETOWN = "HOMETOWN";
     const BIO = "BIO";
+    const DOB = "DOB";
     const HANDEDNESS = "HANDEDNESS";
     const JERSEY = "JERSEY";
-	const HEIGHT = "HEIGHT_INCHES";
-	const WEIGHT = "WEIGHT_LBS";
+	const HEIGHT_INCHES = "HEIGHT_INCHES";
+	const WEIGHT_LBS = "WEIGHT_LBS";
+    const ACCOUNT_CREATED = "ACCOUNT_CREATED";
 }
 
 /**

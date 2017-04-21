@@ -14,6 +14,7 @@ class StatsModel extends \Overall\Model{
 
         foreach($allPlayerIDs as $player){
             $this->allPlayerStats[] = array(
+                'ID' => $player["ID"],
                 'NAME' =>  \DatabaseAPI\Players::getPlayerWithID($player["ID"])[\Enum\Player::NAME],
                 \Enum\Stats::WINS =>  \DatabaseAPI\Records::getWinsForPlayerID($player["ID"]),
                 \Enum\Stats::LOSSES => \DatabaseAPI\Records::getLossesForPlayerID($player["ID"]),

@@ -31,7 +31,7 @@ class StatsView extends \Overall\View{
                                 $colCount = 1;
                                     foreach($this->model->getAllPlayerStats() as $player){
                                     $html .= "<tr>
-                                                <td>" . $player[\Enum\Player::NAME] . "</td>
+                                                <td><a href='../Player/index.php?PLAYERID=" . $player[\Enum\Player::ID] . "'>" . $player[\Enum\Player::NAME] . "</a></td>
                                                 <td>" . $player[\Enum\Stats::WINS] . "</td>
                                                 <td>" . $player[\Enum\Stats::LOSSES] . "</td>
                                                 <td>" . $player[\Enum\Stats::TOTAL_GOALS] . "</td>
