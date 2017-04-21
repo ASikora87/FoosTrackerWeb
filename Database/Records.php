@@ -46,5 +46,25 @@ class Records{
 		$query = "SELECT TEAMID FROM `RECORDS` WHERE ID=$id";
 		return mysqli_fetch_assoc(MySQL::executeQuery($query))["TEAMID"];
 	}
+    /**
+    * Returns Number of wins of player with ID.
+    *
+    * @return string
+    */
+	public static function getWinsForPlayerID($id)
+	{
+		$query = "SELECT Count(*) AS 'TOTAL' FROM `RECORDS` WHERE PLAYERID=$id AND WIN=1";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["TOTAL"];
+	}
+    /**
+    * Returns Number of wins of player with ID.
+    *
+    * @return string
+    */
+	public static function getLossesForPlayerID($id)
+	{
+		$query = "SELECT Count(*) AS 'TOTAL' FROM `RECORDS` WHERE PLAYERID=$id AND WIN=0";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["TOTAL"];
+	}
 }
 ?>
