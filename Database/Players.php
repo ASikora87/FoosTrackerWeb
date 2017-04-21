@@ -3,6 +3,7 @@
  * All methods interacting with the Players table are defined in Players.php
  */
 namespace DatabaseAPI;
+
 /**
  * Players
  */
@@ -21,11 +22,14 @@ class Players{
 		}
 		return $allPlayers;
 	}
-
-    public static function getPlayerNameWithID($id)
-    {
-        $query = "SELECT NAME FROM `PLAYERS` WHERE ID = $id";
-		return mysqli_fetch_assoc(MySQL::executeQuery($query))["NAME"];
+    /**
+    * Returns player with specified ID.
+    *
+    * @return array
+    */
+    public static function getPlayerWithID($id){
+        $query = "SELECT * FROM `PLAYERS` WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query));
     }
 }
 ?>

@@ -6,6 +6,8 @@ namespace DatabaseAPI;
 
 include_once "Points.php";
 include_once "Players.php";
+include_once "Records.php";
+include_once "Games.php";
 
 /**
  * MySQL
