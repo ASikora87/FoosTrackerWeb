@@ -15,11 +15,13 @@ class StatsModel extends \Overall\Model{
         foreach($allPlayerIDs as $player){
             $this->allPlayerStats[] = array(
                 'NAME' =>  \DatabaseAPI\Players::getPlayerWithID($player["ID"])[\Enum\Player::NAME],
-                'TOTAL_GOALS' =>  \DatabaseAPI\Points::getTotalGoalCountForUserID($player["ID"]),
-                'OFFENSIVE_GOALS' => \DatabaseAPI\Points::getOffensiveGoalCountForUserID($player["ID"]),
-                'DEFENSIVE_GOALS' => \DatabaseAPI\Points::getDefensiveGoalCountForUserID($player["ID"]),
-                'SLAP_BACK_GOALS' => \DatabaseAPI\Points::getSBGoalCountForUserID($player["ID"]),
-                'OWN_GOALS' => \DatabaseAPI\Points::getOwnGoalCountForUserID($player["ID"]));
+                \Enum\Stats::WINS =>  \DatabaseAPI\Records::getWinsForPlayerID($player["ID"]),
+                \Enum\Stats::LOSSES => \DatabaseAPI\Records::getLossesForPlayerID($player["ID"]),
+                \Enum\Stats::TOTAL_GOALS =>  \DatabaseAPI\Points::getTotalGoalCountForUserID($player["ID"]),
+                \Enum\Stats::OFFENSIVE_GOALS => \DatabaseAPI\Points::getOffensiveGoalCountForUserID($player["ID"]),
+                \Enum\Stats::DEFENSIVE_GOALS => \DatabaseAPI\Points::getDefensiveGoalCountForUserID($player["ID"]),
+                \Enum\Stats::SLAP_BACK_GOALS => \DatabaseAPI\Points::getSBGoalCountForUserID($player["ID"]),
+                \Enum\Stats::OWN_GOALS => \DatabaseAPI\Points::getOwnGoalCountForUserID($player["ID"]));
         }
     }
 

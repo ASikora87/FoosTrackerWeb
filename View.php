@@ -16,11 +16,11 @@ class View{
         $html = "
     	            <div class='side-bar'>
                         <ul>
-                            <li class='menu-head'>Menu<a href='#' class='push_menu'><span class='glyphicon glyphicon-align-justify pull-right'></span></a></li>
+                            <li class='menu-head'>Site Navigation<a href='#' class='push_menu'><span class='glyphicon glyphicon-align-justify pull-right'></span></a><hr></li>
                             <div class='menu'>";
                                 foreach($this->model->getPages() as $page){
                                     if($page["NAV_NAME"] == 'ADMIN') continue; // Admin page should not be in nav bar
-                                    $html .= "<li><a href='javascript:void(0)' class='tablinks' onclick=\"loadPage('" . $this->model->getPath() . $page["PATHS"][0] . "')\">" . $page["NAV_NAME"] . "</a></li>";
+                                    $html .= "<li><a href='javascript:void(0)' class='tablinks' onclick=\"loadPage('" . $this->model->getPath() . $page["PATHS"][0] . "')\"><span class='" . $page["NAV_GLYPH"] . "' aria-hidden='true'></span>" . ucwords(strtolower($page["NAV_NAME"])) . "</a></li>";
                                 }
                $html .=    "</div> <!-- menu -->
                          </ul>

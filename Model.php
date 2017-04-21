@@ -26,12 +26,14 @@ class Model{
             'HOME' => array(
                 'TITLE' => 'Harman Foosball Tracking System',
                 'NAV_NAME'  => 'HOME',
+                'NAV_GLYPH' => 'glyphicon glyphicon-home',
                 'PATHS' => array('/index.php'),
                 'DESCRIPTION' => 'Welcome to the official homepage of the Harman Internation Foosball League (HIFL)!'
             ),
             'STATS' => array(
                 'TITLE' => 'Overall Stats',
-                'NAV_NAME'  => 'STATS',
+                'NAV_NAME'  => 'STATISTICS',
+                'NAV_GLYPH' => 'glyphicon glyphicon-list-alt',
                 'PATHS' => array('/Stats/index.php'),
                 'DESCRIPTION' => 'The latest statistics in the world of the Harman Internation Foosball League (HIFL).'
             )

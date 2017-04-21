@@ -18,6 +18,8 @@ class StatsView extends \Overall\View{
                             <thead>
                                 <tr class='column_title'>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Player::NAME))) . "</th></div>
+                                    <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::WINS))) . "</th></div>
+                                    <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::LOSSES))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::TOTAL_GOALS))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::OFFENSIVE_GOALS))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::DEFENSIVE_GOALS))) . "</th></div>
@@ -30,6 +32,8 @@ class StatsView extends \Overall\View{
                                     foreach($this->model->getAllPlayerStats() as $player){
                                     $html .= "<tr>
                                                 <td>" . $player[\Enum\Player::NAME] . "</td>
+                                                <td>" . $player[\Enum\Stats::WINS] . "</td>
+                                                <td>" . $player[\Enum\Stats::LOSSES] . "</td>
                                                 <td>" . $player[\Enum\Stats::TOTAL_GOALS] . "</td>
                                                 <td>" . $player[\Enum\Stats::OFFENSIVE_GOALS] . "</td>
                                                 <td>" . $player[\Enum\Stats::DEFENSIVE_GOALS] . "</td>

@@ -3,6 +3,11 @@ body
     background-image: -webkit-gradient(linear, left top, right bottom, from(yellow), to(yellowgreen));
 }
 
+.glyphicon
+{
+    padding-right: 20px;
+}
+
 .jumbotron
 {
     background-color: yellow;
