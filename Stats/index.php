@@ -6,6 +6,7 @@ include_once "../View.php";
 include_once "./StatsView.php";
 include_once "./StatsModel.php";
 include_once "./StatsController.php";
+include_once "../Support/Enums.php";
 include_once "../Database/DatabaseAPI.php";
 
 $model = new StatsModel();
