@@ -35,5 +35,50 @@ class Games{
 
         return Count($team1Points) > Count($team2Points) ? $records[0]["TEAMID"] : $records[1]["TEAMID"];
 	}
+    /**
+    * Returns game start of game with ID.
+    *
+    * @return string
+    */
+    public static function getGameStartOfGameID($id){
+        $query = "SELECT DATE_FORMAT(GAMESTART,'%H:%i:%s') TIME FROM GAMES WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["TIME"];
+    }
+    /**
+    * Returns game end of game with ID.
+    *
+    * @return string
+    */
+    public static function getGameEndOfGameID($id){
+        $query = "SELECT DATE_FORMAT(GAMEEND,'%H:%i:%s') TIME FROM `GAMES` WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["TIME"];
+    }
+    /**
+    * Returns game duration of game with ID.
+    *
+    * @return string
+    */
+    public static function getDurationOfGameID($id){
+        $query = "SELECT TIMEDIFF(GAMEEND, GAMESTART) DURATION FROM `GAMES` WHERE ID=$id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["DURATION"];
+    }
+    /**
+    * Returns game end of game with ID.
+    *
+    * @return string
+    */
+    public static function getDateOfGameID($id){
+        $query = "SELECT DATE_FORMAT(GAMEEND,'%m-%d-%Y') DATE FROM `GAMES` WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["DATE"];
+    }
+    /**
+    * Returns game type of game with ID.
+    *
+    * @return string
+    */
+    public static function getTypeOfGameID($id){
+        $query = "SELECT GAMETYPE FROM `GAMES` WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["GAMETYPE"];
+    }
 }
 ?>

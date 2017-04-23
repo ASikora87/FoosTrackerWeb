@@ -31,5 +31,15 @@ class Players{
         $query = "SELECT * FROM `PLAYERS` WHERE ID = $id";
 		return mysqli_fetch_assoc(MySQL::executeQuery($query));
     }
+
+    /**
+    * Returns player Name with specified ID.
+    *
+    * @return string
+    */
+    public static function getPlayerNameWithID($id){
+        $query = "SELECT NAME FROM `PLAYERS` WHERE ID = $id";
+		return mysqli_fetch_assoc(MySQL::executeQuery($query))["NAME"];
+    }
 }
 ?>
