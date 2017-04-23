@@ -7,6 +7,7 @@ namespace Enum;
  */
 abstract class Player{
 
+    const PROFILE_PIC = "PROFILE_PIC";
     const ID = "ID";
 	const NAME = "NAME";
 	const HOMETOWN = "HOMETOWN";
@@ -31,6 +32,16 @@ abstract class Stats{
     const OWN_GOALS = "OWN_GOALS";
 	const WINS = "WINS";
     const LOSSES = "LOSSES";
+}
+
+/**
+ * Game Enum
+ */
+abstract class Game{
+
+    const OPPONENT = "OPPONENT";
+    const DATE = "DATE";
+    const OUTCOME = "OUTCOME";
 }
 
 ?>
