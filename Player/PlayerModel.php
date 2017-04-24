@@ -40,8 +40,10 @@ class PlayerModel extends \Overall\Model{
             $opponents = \DatabaseAPI\Records::getOpposingPlayerIDsForRecordID($record["ID"]);
 
             $this->gameStats[] = array(
+                \Enum\Game::TEAM_USED => \DatabaseAPI\Records::getTeamIDWithRecordID($record["ID"]),
                 \Enum\Game::DATE => \DatabaseAPI\Games::getDateOfGameID($record["GAMEID"]),
                 \Enum\Game::OUTCOME => $record["OUTCOME"],
+                \Enum\Game::GAME_TYPE => \DatabaseAPI\Games::getGameTypeOfGameID($record["GAMEID"]),
                 \Enum\Game::OPPONENT => count($opponents) > 1 ? array(\DatabaseAPI\Players::getPlayerWithID($opponents[0]["PLAYERID"]), \DatabaseAPI\Players::getPlayerWithID($opponents[1]["PLAYERID"])) : \DatabaseAPI\Players::getPlayerWithID($opponents[0]["PLAYERID"]),
                 \Enum\Stats::OFFENSIVE_GOALS => \DatabaseAPI\Points::getOffensiveGoalCountForRecordID($record["ID"]),
                 \Enum\Stats::DEFENSIVE_GOALS => \DatabaseAPI\Points::getDefensiveGoalCountForRecordID($record["ID"]),

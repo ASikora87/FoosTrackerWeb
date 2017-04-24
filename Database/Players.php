@@ -41,5 +41,13 @@ class Players{
         $query = "SELECT NAME FROM `PLAYERS` WHERE ID = $id";
 		return mysqli_fetch_assoc(MySQL::executeQuery($query))["NAME"];
     }
+
+    /**
+    * Insert player.
+    */
+    public static function insertPlayer($pin, $pic, $name, $dob, $hometown, $bio, $jersey, $handedness, $height_inches, $weight_lbs){
+        $query = "CALL insertPlayer($pin, $pic, $name, $dob, $hometown, $bio, $jersey, $handedness, $height_inches, $weight_lbs)";
+		return MySQL::executeQuery($query);
+    }
 }
 ?>

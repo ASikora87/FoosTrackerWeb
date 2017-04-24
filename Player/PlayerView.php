@@ -23,7 +23,7 @@ class PlayerView extends \Overall\View{
             <ul class='list-group'>
                 <li class='list-group-item'><br><img src='data:image/jpeg;base64," . base64_encode( $this->model->getPlayer()[\Enum\Player::PROFILE_PIC] ) . "'/><br><br><h3>" . $this->model->getPlayer()[\Enum\Player::NAME] . "</h3></li>
                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::HOMETOWN))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::HOMETOWN] ."</li>
-                <li class='list-group-item text-right'><span class='pull-left'><strong>" . \Enum\Player::DOB . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::DOB] ."</li>
+                <li class='list-group-item text-right'><span class='pull-left'><strong>" . \Enum\Player::DOB . "</strong></span>" . date("d/m/Y", strtotime($this->model->getPlayer()[\Enum\Player::DOB])) ."</li>
                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::JERSEY))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::JERSEY] ."</li>
                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::HANDEDNESS))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::HANDEDNESS] ."</li>
                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::HEIGHT_INCHES))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::HEIGHT_INCHES] ."</li>
@@ -74,6 +74,8 @@ class PlayerView extends \Overall\View{
                         <tr class='column_title'>
                             <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::DATE))) . "</th></div>
                             <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::OUTCOME))) . "</th></div>
+                            <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::TEAM_USED))) . "</th></div>
+                            <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::GAME_TYPE))) . "</th></div>
                             <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::OPPONENT))) . "</th></div>
                             <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::OFFENSIVE_GOALS))) . "</th></div>
                             <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::DEFENSIVE_GOALS))) . "</th></div>
@@ -88,10 +90,13 @@ class PlayerView extends \Overall\View{
                             // Limit 5 for overview
                             if($count == 5)
                                 break;
+
                             $html .=
                                 "<tr>
                                     <td>" . $game[\Enum\Game::DATE] . "</td>
-                                    <td>" . $game[\Enum\Game::OUTCOME] . "</td>";
+                                    <td>" . $game[\Enum\Game::OUTCOME] . "</td>
+                                    <td id='team' bgcolor='" . $game[\Enum\Game::TEAM_USED] . "'>" . $game[\Enum\Game::TEAM_USED] . "</td>
+                                    <td>" . $game[\Enum\Game::GAME_TYPE] . "</td>";
                                     if((count($game[\Enum\Game::OPPONENT]) != 2))
                                         $html .= "<td><a href='index.php?PLAYERID=" . $game[\Enum\Game::OPPONENT]["ID"]  . "'>" . $game[\Enum\Game::OPPONENT]["NAME"] . "</a></td>";
                                     else
@@ -122,6 +127,8 @@ class PlayerView extends \Overall\View{
                                 <tr class='column_title'>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::DATE))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::OUTCOME))) . "</th></div>
+                                    <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::TEAM_USED))) . "</th></div>
+                                    <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::GAME_TYPE))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Game::OPPONENT))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::OFFENSIVE_GOALS))) . "</th></div>
                                     <th><div class='text'>" . ucwords(strtolower(str_replace("_", " ", \Enum\Stats::DEFENSIVE_GOALS))) . "</th></div>
@@ -135,7 +142,9 @@ class PlayerView extends \Overall\View{
                                     $html .=
                                         "<tr>
                                             <td>" . $game[\Enum\Game::DATE] . "</td>
-                                            <td>" . $game[\Enum\Game::OUTCOME] . "</td>";
+                                            <td>" . $game[\Enum\Game::OUTCOME] . "</td>
+                                            <td id='team' bgcolor='" . $game[\Enum\Game::TEAM_USED] . "'>" . $game[\Enum\Game::TEAM_USED] . "</td>
+                                            <td>" . $game[\Enum\Game::GAME_TYPE] . "</td>";
                                             if((count($game[\Enum\Game::OPPONENT]) != 2))
                                                 $html .= "<td><a href='index.php?PLAYERID=" . $game[\Enum\Game::OPPONENT]["ID"]  . "'>" . $game[\Enum\Game::OPPONENT]["NAME"] . "</a></td>";
                                             else

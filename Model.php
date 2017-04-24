@@ -14,7 +14,10 @@ class Model{
 
     public function init(){
 
-        $this->path = "http://" . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+        // If live on server set true
+        $LIVE = false;
+
+        $this->path = "http://" . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . ($LIVE ? '\FoosTracker' : '');
 
         /*
             Add new pages here only.
@@ -27,20 +30,20 @@ class Model{
                 'TITLE' => 'Harman Foosball Tracking System',
                 'NAV_NAME'  => 'HOME',
                 'NAV_GLYPH' => 'glyphicon glyphicon-home',
-                'PATHS' => array('/index.php'),
+                'PATHS' => array(($LIVE ? '/FoosTracker' : "") . '/index.php'),
                 'DESCRIPTION' => 'Welcome to the official homepage of the Harman International Foosball League (HIFL)!'
             ),
             'STATS' => array(
                 'TITLE' => 'Overall Statistics',
                 'NAV_NAME'  => 'STATISTICS',
                 'NAV_GLYPH' => 'glyphicon glyphicon-list-alt',
-                'PATHS' => array('/Stats/index.php'),
+                'PATHS' => array(($LIVE ? '/FoosTracker' : "") . '/Stats/index.php'),
                 'DESCRIPTION' => 'The latest statistics in the world of the Harman International Foosball League (HIFL).'
             ),
             'PLAYER' => array(
                 'TITLE' => 'Player Profile',
                 'NAV_NAME'  => 'ADMIN',
-                'PATHS' => array('/Player/index.php'),
+                'PATHS' => array(($LIVE ? '/FoosTracker' : "") . '/Player/index.php'),
                 'DESCRIPTION' => 'All the deets about your favorite Harman International Foosball League (HIFL) player!'
             )
         );

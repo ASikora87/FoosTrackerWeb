@@ -76,7 +76,7 @@ class Games{
     *
     * @return string
     */
-    public static function getTypeOfGameID($id){
+    public static function getGameTypeOfGameID($id){
         $query = "SELECT GAMETYPE FROM `GAMES` WHERE ID = $id";
 		return mysqli_fetch_assoc(MySQL::executeQuery($query))["GAMETYPE"];
     }

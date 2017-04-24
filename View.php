@@ -20,7 +20,7 @@ class View{
                             <div class='menu'>";
                                 foreach($this->model->getPages() as $page){
                                     if($page["NAV_NAME"] == 'ADMIN') continue; // Admin page should not be in nav bar
-                                    $html .= "<li><a href='javascript:void(0)' class='tablinks' onclick=\"loadPage('" . $this->model->getPath() . $page["PATHS"][0] . "')\"><span class='" . $page["NAV_GLYPH"] . "' aria-hidden='true'></span>" . ucwords(strtolower($page["NAV_NAME"])) . "</a></li>";
+                                    $html .= "<li><a href='javascript:void(0)' class='tablinks' onclick=\"loadPage('" . $page["PATHS"][0] . "')\"><span class='" . $page["NAV_GLYPH"] . "' aria-hidden='true'></span>" . ucwords(strtolower($page["NAV_NAME"])) . "</a></li>";
                                 }
                $html .=    "</div> <!-- menu -->
                          </ul>
@@ -87,7 +87,7 @@ class View{
             <script src='https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js'></script>
 
             <!-- Our Stuff -->
-            <script src='" . $this->model->getPath() . "/Assets/js/global.js''></script>
+            <script src='" . $this->model->getPath() . "/Assets/js/global.js'></script>
 
             </body>
         </html>";

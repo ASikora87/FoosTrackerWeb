@@ -39,6 +39,8 @@ abstract class Stats{
  */
 abstract class Game{
 
+    const TEAM_USED = "TEAM_USED";
+    const GAME_TYPE = "GAME_TYPE";
     const OPPONENT = "OPPONENT";
     const DATE = "DATE";
     const OUTCOME = "OUTCOME";

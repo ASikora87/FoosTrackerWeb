@@ -41,7 +41,7 @@ class MySQL{
     */
 	private static function loadCredentials(){
 
-		$json = file_get_contents("http://" . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/Assets/resources/DBInfo.local');
+		$json = file_get_contents('http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname(dirname($_SERVER['PHP_SELF'])) . '/Assets/resources/DBInfo.local');
 		$json_data = json_decode($json,true);
 
 		self::$sql_user = $json_data['SQL_USER'];
