@@ -116,5 +116,19 @@ class Points{
 	{
 		return substr_count(print_r(self::getAllPointsWithRecordID($id),true), "OWN_GOAL");
 	}
+    /**
+    * Returns all points scored on a given day for a given user.
+    *
+    * @return array
+    */
+	public static function getAllPointsScoredOnDayByPlayer($day, $player){
+		$query = "SELECT TIMESTAMP FROM POINTS WHERE DAYNAME(TIMESTAMP)=$day AND RECORDID IN (SELECT ID FROM RECORDS WHERE PLAYERID=$player)";
+		$result = MySQL::executeQuery($query);
+		$points = array();
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($points, $row);
+		}
+		return $points;
+	}
 }
 ?>

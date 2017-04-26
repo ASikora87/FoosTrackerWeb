@@ -62,13 +62,22 @@ class Records{
 		return $teamIDs;
 	}
     /**
+    * Returns games played of player with ID.
+    *
+    * @return string
+    */
+	public static function getGamesPlayedForPlayerID($id)
+	{
+		return count(self::getAllRecordsWithPlayerID($id));
+	}
+    /**
     * Returns Number of wins of player with ID.
     *
     * @return string
     */
 	public static function getWinsForPlayerID($id)
 	{
-		return substr_count(print_r(self::getAllRecordsWithPlayerID($id),true), "LOSS");
+		return substr_count(print_r(self::getAllRecordsWithPlayerID($id),true), "WIN");
 	}
     /**
     * Returns Number of wins of player with ID.
@@ -93,6 +102,20 @@ class Records{
 			array_push($allOpponents, $row);
 		}
 		return $allOpponents;
+	}
+    /**
+    * Returns the most used team of player with id.
+    *
+    * @return string
+    */
+	public static function getMostUsedTeamForPlayerID($id)
+	{
+		$usedTeams = array_count_values(array_column(self::getTeamIDsForPlayerID($id), 'TEAMID'));
+
+		if($usedTeams == null)
+			return "NONE";
+
+		return $usedTeams['RED'] > $usedTeams['BLUE'] ? 'RED':'BLUE';
 	}
 }
 ?>
