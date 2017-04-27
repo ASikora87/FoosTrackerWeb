@@ -29,7 +29,17 @@ class Players{
     */
     public static function getPlayerWithID($id){
         $query = "SELECT * FROM `PLAYERS` WHERE ID = $id";
-		return mysqli_fetch_assoc(MySQL::executeQuery($query));
+
+        $player = mysqli_fetch_assoc(MySQL::executeQuery($query));
+
+        $picture = $player[\Enum\Player::PROFILE_PIC];
+
+        $picture = ereg_replace("-","+",$picture);
+        $picture = ereg_replace("_","/",$picture);
+
+        $player[\Enum\Player::PROFILE_PIC] = $picture;
+
+        return $player;
     }
 
     /**

@@ -12,5 +12,5 @@ function addJavascript(jsname,pos) {
 // Inlude js files here
 addJavascript((LIVE ? 'http://autotest.harman.com:80/FoosTracker/' : '../') + 'Assets/js/main.js','body');
 addJavascript((LIVE ? 'http://autotest.harman.com:80/FoosTracker/' : '../') + 'Assets/js/navBar.js','body');
-addJavascript((LIVE ? 'http://autotest.harman.com:80/FoosTracker/' : '../') + 'Assets/js/dataTable.js','body');
+addJavascript((LIVE ? 'http://autotest.harman.com:80/FoosTracker/' : '../') + 'Assets/js/dataTable.js','head');
 

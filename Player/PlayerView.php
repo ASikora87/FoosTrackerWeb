@@ -22,7 +22,7 @@ class PlayerView extends \Overall\View{
                     <div class='col-sm-3'>
                         <div class='panel panel-default'>
                             <ul class='list-group'>
-                                <li class='list-group-item'><br><img src='data:image/jpeg;base64," . base64_encode( $this->model->getPlayer()[\Enum\Player::PROFILE_PIC] ) . "'/><br><br><h3>" . $this->model->getPlayer()[\Enum\Player::NAME] . "</h3></li>
+                                <li class='list-group-item'><br><img src='data:image/jpeg;base64," . $this->model->getPlayer()[\Enum\Player::PROFILE_PIC]  . "'/><br><br><h3>" . $this->model->getPlayer()[\Enum\Player::NAME] . "</h3></li>
                                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::HOMETOWN))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::HOMETOWN] ."</li>
                                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . \Enum\Player::DOB . "</strong></span>" . date("d/m/Y", strtotime($this->model->getPlayer()[\Enum\Player::DOB])) ."</li>
                                 <li class='list-group-item text-right'><span class='pull-left'><strong>" . ucwords(strtolower(str_replace("_", " ",\Enum\Player::JERSEY))) . "</strong></span>" . $this->model->getPlayer()[\Enum\Player::JERSEY] ."</li>
@@ -33,15 +33,14 @@ class PlayerView extends \Overall\View{
                         </div>
                     </div>
 
-                    <!-- NAV TABS DEFINED -->
                     <div class='col-sm-9'>
-                        <ul class='nav nav-tabs' id='myTab'>
+                        <!-- NAV TABS DEFINED -->
+                        <ul class='nav nav-tabs' id='overallTabs'>
                             <li class='active'><a href='#overallStats' data-toggle='tab'>Overview</a></li>
                             <li><a href='#gameStats' data-toggle='tab'>Game Log</a></li>
                             <li><a href='#advancedStats' data-toggle='tab'>Advanced Statistics</a></li>
                         </ul>
 
-                    <!-- OVERALL STATS TAB -->
                     <div class='tab-content'>
                         <!-- OVERALL STATS TAB -->
                         <div class='tab-pane active' id='overallStats'>
@@ -74,7 +73,7 @@ class PlayerView extends \Overall\View{
                                             <td>" . $this->model->getPlayerStats()[\Enum\Stats::OWN_GOALS] . "</td>
                                         </tr>
                                     </tbody>
-                                </table
+                                </table>
 
                                 <h2>Last 5 Games</h2>
                                 <table class='table table-striped table-bordered'>
@@ -171,12 +170,21 @@ class PlayerView extends \Overall\View{
 
                         <!-- ADVANCED STATS TAB -->
                         <div class='tab-pane' id='advancedStats'>
-                        <h2>Advanced Statistics</h2>
-                        <!-- ADVANCED STUFF HERE -->
+                            <h2>Advanced Statistics</h2>
+                            <ul class='nav nav-tabs' id='advancedTabs'>
+                                <li class='active'><a href='#advancedGameStats' data-toggle='tab'>Game</a></li>
+                                <li><a href='#' data-toggle='tab'>Week</a></li>
+                                <li><a href='#' data-toggle='tab'>Day</a></li>
+                            </ul>
+                            <div class='tab-content'>
+                                <!-- ADVANCED GAME TAB -->
+                                <div class='tab-pane active'>
+
+
+                                </div><!-- ADVANCED GAME TAB -->
                         </div><!-- ADVANCED STATS TAB -->
                     </div><!--/tab-content-->
                     </div><!--/col-9-->";
-
         echo $html;
         $this->displayFooter();
     }
